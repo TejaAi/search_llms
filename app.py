@@ -27,9 +27,16 @@ Try more LangChain 🤝 Streamlit Agent examples at [github.com/langchain-ai/str
 
 ## Sidebar for settings
 st.sidebar.title("Settings")
-st.secrets("LANGCHAIN_API_KEY")
-st.secrets("HF_TOKEN")
-st.secrets("GROQ_API_KEY")
+
+st.write(
+    "Has environment variables been set:",
+    os.environ["LANGCHAIN_API_KEY"] == st.secrets["LANGCHAIN_API_KEY"],
+    os.environ["HF_TOKEN"] == st.secrets["HF_TOKEN"],
+    os.environ["GROQ_API_KEY"] == st.secrets["GROQ_API_KEY"],
+)
+# st.secrets("LANGCHAIN_API_KEY")
+# st.secrets("HF_TOKEN")
+# st.secrets("GROQ_API_KEY")
 api_key=st.sidebar.text_input("Enter your Groq API Key:",type="password")
 
 if "messages" not in st.session_state:
